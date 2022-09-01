@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block content %}
+
+	<div class='home-container'>
+
+		<div class='mirror-top-container'>
+
+			<div class='weather-top-container'>
+				<div class='upper-weather-container'>
+					<div class='weather-current-temp'></div>
+					<div class='weather-current-icon'><img src="" id='weather-current-img'></div>
+				</div>
+				<div class='weather-current-title'></div>
+				<div class='weather-current-desc'></div>
+			</div>
+
+			<div class='time-top-container' id='time-top-container'>
+				<div class='time-top' id='time-top'></div>
+				<div class='time-mid' id='time-mid'></div>
+				<div class='time-bottom' id='time-bottom'></div>
+			</div>
+		</div>
+
+		<div class='mirror-sides-container' id='widget-content'>
+			<div class='news-right-container'>
+				
+				<div class="col-md-4">
+					<div class="card shadow-none">
+						<div class="card-header bg-black">
+							<h3 class="card-title">Task Today</h3>
+				
+							<div class="card-tools">
+								<button type="button" class="btn btn-tool" data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+							</div>
+							<!-- /.card-tools -->
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body bg-black">
+							<table class="table mb-1">
+								{% for coba in coba %}
+								<tr>
+									<td scope="row">{{ coba['id'] }}</th>
+									<td>{{ coba['task'] }}</td>
+									<td><a href="#!" data-mdb-toggle="tooltip" title="Done"><i class="fas fa-check text-white"></i></a>
+								</a></td>
+								</tr>
+								{% endfor %}
+							</table>
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<!-- /.card -->
+				</div>
+				
+		</div>
+			<div class='time-top-container' id='time-top-container'>
+				
+		
+						<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								
+							  <div class="carousel-item active">
+								NEWS
+							  </div>
+							  {% for title,desc,img,p_date in contents %}
+							  <div class="carousel-item">
+								<img class="d-block w-100" src="{{img}}" alt="Second slide">
+								<h5>{{title}}</h5>
+								  
+								</div>
+							  {% endfor %}
+							  
+							</div>
+						  </div>
+					
+			</div>
+		</div>
+
+		
+	</div>
+	  <audio controls autoplay id="au" hidden>
+  
+		<source src="../static/music/MaryClare.mp3" type="audio/mpeg" >
+	  </audio>
+	  <script>
+		var c=0;/*from w  w  w  . j a va  2s  .  c o  m*/
+		var songs = {{url | safe}};
+		var a=document.getElementById("au");
+		a.addEventListener('ended', function(){
+		  document.getElementById("au").src=songs[c];
+		  a.load();
+		  console.log(c);
+		  c++;
+		  if(c>=songs.length){
+			  c=0;
+		  }
+		});
+		
+			  </script>  
+{% endblock content %}

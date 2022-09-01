@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard{% endblock %}
+{% block content %}
+<div class="col-md-6">
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Task</h3>
+    </div>
+    <div class="card-body">
+    <form action="/upload" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <div class="input-group">
+        
+          <input type="file" name="file">
+          
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+          <!-- /.card-header -->
+        <input type="submit" name="" value="Simpan Music">
+    </form>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Music List</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>Task</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              {% for coba in coba %}
+              <tr>
+                <td>{{ coba['id'] }}</td>
+                <td>{{ coba['name'] }}</td>
+              </tr>
+              <td><a href="{{ url_for('deleteMusic', id=coba.id) }}">delete</a></td>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+          </ul>
+        </div>
+      </div>
+      <!-- /.card -->
+  </div>
+
+{% endblock %}

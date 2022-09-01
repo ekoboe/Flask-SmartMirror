@@ -1,0 +1,4 @@
+flask==1.1.1
+requests==2.23.0
+newsapi==0.1.1
+flask-socketio==4.5.1

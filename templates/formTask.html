@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard{% endblock %}
+{% block content %}
+<div class="col-md-6">
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Task</h3>
+    </div>
+
+          <!-- form start -->
+          <form action="/prosesTask" method="post">
+            <div class="card-body">
+              <div class="form-group">
+                <label>Task</label>
+                <input type="text" class="form-control" name="coba">
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Bordered Table</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Task</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for coba in coba %}
+                <tr>
+                  <td>{{ coba['id'] }}</td>
+                  <td>{{ coba['task'] }}</td>
+                  <td><a href="{{ url_for('deleteTask', id=coba.id) }}">delete</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer clearfix">
+            </ul>
+          </div>
+        </div>
+        <!-- /.card -->
+    </div>
+{% endblock %}
